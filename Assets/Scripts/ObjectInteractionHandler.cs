@@ -4,6 +4,7 @@ public class ObjectInteractionHandler : MonoBehaviour
 {
     public int coinValue = 1; // Value for the coins
     public int damageValue = 10; // Damage value for traps
+    public int healthValue = 20; // Value for health pickups
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,8 @@ public class ObjectInteractionHandler : MonoBehaviour
                 return; // If there is no PlayerScoreManager, no need to proceed
             }
 
+            // Debug.Log("Player collided with: " + gameObject.tag);
+
             // Handle different type of interactions based on tag
             if (CompareTag("Coin"))
             {
@@ -24,6 +27,12 @@ public class ObjectInteractionHandler : MonoBehaviour
             else if (CompareTag("Trap"))
             {
                 playerScoreManager.TakeDamage(damageValue);
+            }
+            else if (CompareTag("HealthPickup"))
+            {
+                playerScoreManager.RestoreHealth(healthValue);
+                // Debug.Log("Picked up");
+                Destroy(gameObject);
             }
         }
     }

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5222101438776144174}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.0611348, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinValue: 10
   damageValue: 10
+  healthValue: 20
 --- !u!136 &6347203731486501324
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -119,6 +120,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.0000005
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

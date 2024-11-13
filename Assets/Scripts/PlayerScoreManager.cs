@@ -1,22 +1,14 @@
 using UnityEngine;
-using TMPro;
 
 public class PlayerScoreManager : MonoBehaviour
 {
     public int score = 0;
     public int health = 100;
-    public TMP_Text scoreText;
-    public TMP_Text healthText;
-
-    private void Start()
-    {
-        UpdateUI();
-    }
+    public int maxHealth = 100;
 
     public void AddScore(int value)
     {
         score += value;
-        UpdateUI();
         Debug.Log("Score: " + score);
     }
 
@@ -24,20 +16,23 @@ public class PlayerScoreManager : MonoBehaviour
     {
         health -= damage;
         health = Mathf.Max(health, 0); // Ensure health doesn't go below 0
-        UpdateUI();
         Debug.Log("Health: " + health);
+
+        if (health <= 0)
+        {
+            PlayerDeath();
+        }
     }
 
-    private void UpdateUI()
+    public void RestoreHealth(int value)
     {
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score;
-        }
+        health += value;
+        health = Mathf.Min(health, maxHealth); // Ensure health doesn't exceed maxHealth
+        Debug.Log("Health Restored: " + health);
+    }
 
-        if (healthText != null)
-        {
-            healthText.text = "Health: " + health;
-        }
+    private void PlayerDeath()
+    {
+        Debug.Log("Player has died!");
     }
 }
