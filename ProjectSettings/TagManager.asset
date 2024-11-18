@@ -7,6 +7,7 @@ TagManager:
   - Coin
   - Trap
   - HealthPickup
+  - Switch
   layers:
   - Default
   - TransparentFX
