@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour, IInteractable
 {
-    public int coinValue = 1;
+    // Coin value to add to the player's score
+    [SerializeField] private int coinValue = 1;
 
+    // This method is called when the player interacts with the coin
     public void Interact()
     {
         // Directly access PlayerScoreManager through the Singleton instance
         PlayerScoreManager.Instance.AddScore(coinValue);
-        Destroy(gameObject); // Destroy the coin after collection
+
+        // Destroy the coin after collection
+        Destroy(gameObject);
     }
 }

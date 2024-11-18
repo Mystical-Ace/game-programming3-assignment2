@@ -2,38 +2,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public float mouseSensitivity = 100f;
-
-    private Rigidbody rb;
-    private Transform playerBody;
-    private float xRotation = 0f;
+    [SerializeField] private float speed = 5f;
+    private Rigidbody _rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        playerBody = transform;
-        Cursor.lockState = CursorLockMode.Locked;
+        _rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // Handle player movement
+        // Get input for horizontal and vertical movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = playerBody.right * moveHorizontal + playerBody.forward * moveVertical;
+        // Calculate movement direction based on input
+        Vector3 movement = transform.right * moveHorizontal + transform.forward * moveVertical;
 
-        rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
-
-        // Handle camera rotation with mouse
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        playerBody.localRotation = Quaternion.Euler(xRotation, playerBody.localRotation.eulerAngles.y, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        // Move the player character using Rigidbody to ensure physics accuracy
+        _rb.MovePosition(transform.position + movement * speed * Time.fixedDeltaTime);
     }
 }
