@@ -2,9 +2,26 @@ using UnityEngine;
 
 public class PlayerScoreManager : MonoBehaviour
 {
+    // Singleton instance
+    public static PlayerScoreManager Instance { get; private set; }
+    
     public int score = 0;
     public int health = 100;
     public int maxHealth = 100;
+
+    private void Awake()
+    {
+        // Singleton setup: Ensure only one instance exists
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     public void AddScore(int value)
     {

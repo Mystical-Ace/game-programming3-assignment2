@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 293976391427055709}
   - component: {fileID: 7372250497763178370}
   - component: {fileID: 3828648575792895977}
-  - component: {fileID: 4336295522782261027}
+  - component: {fileID: 7260269379501103359}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Trap
@@ -569,7 +569,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4336295522782261027
+--- !u!114 &7260269379501103359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -578,8 +578,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3952068212746318319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5294898229b34d41b856343366ffd60, type: 3}
+  m_Script: {fileID: 11500000, guid: 614e24209584d9d42bd069c25e3eef0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinValue: 1
   damageValue: 10
